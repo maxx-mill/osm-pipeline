@@ -1,0 +1,25 @@
+{
+  "osm": {
+  "location_name": "Ikeja, Lagos, Nigeria",
+  "destination_folder": "data/raw",
+  "tags": {
+    "building": true,
+    "highway": true,
+    "amenity": ["hospital", "school"]
+  },
+  "timeout": 600
+},
+  "cleaning": {
+    "target_crs": "EPSG:4326"
+  },
+  "postgis": {
+    "user": "postgres",
+    "password": "password",
+    "host": "localhost",
+    "port": "5432",
+    "database": "gis_db",
+    "schema": "public",
+    "table_name": "osm_data",
+    "if_exists": "replace"
+  }
+}
