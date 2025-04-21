@@ -16,6 +16,61 @@ A Python pipeline to download, clean, and load OpenStreetMap (OSM) data into Pos
 ```bash
 pip install osmnx geopandas psycopg2# osm-pipeline
 ```
+
+## Config File Generator (create a starter config file)
+```bash
+echo '{
+  "osm": {
+    "location_name": "Custom Location",
+    "tags": {"building": true, "highway": true}
+  },
+  "cleaning": {
+    "target_crs": "EPSG:4326"
+  },
+  "postgis": {
+    "user": "your_user",
+    "password": "your_pass"
+  }
+}' > my_config.json
+```
+## Advanced config file settings
+```bash
+{
+  "osm": {
+    "location_name": "Ikeja, Nigeria",
+    "destination_folder": "data/raw",
+    "timeout": 300,
+    "tags": {
+      "building": true,
+      "highway": true,
+      "amenity": true,
+      "landuse": true,
+      "natural": true
+    }
+  },
+  "cleaning": {
+    "target_crs": "EPSG:4326",
+    "standardize_columns": true
+  },
+  "postgis": {
+    "user": "postgres",
+    "password": "password",
+    "host": "localhost",
+    "port": 5432,
+    "database": "gis_db",
+    "schema": "public",
+    "table_name": "osm_data",
+    "if_exists": "replace",
+    "extensions": ["postgis"],
+    "chunk_size": 5000,
+    "geometry_type": "GEOMETRY",
+    "create_index": true
+  }
+}
+```
+
+
+
 ## All Available Arguments
 
 | Argument         | Description                              | Example                     |
